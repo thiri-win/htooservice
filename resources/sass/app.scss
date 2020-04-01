@@ -1,0 +1,33 @@
+// Fonts
+@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Asap+Condensed:500');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import '~bootstrap/scss/bootstrap';
+
+//base style
+@import '../demo11/src/assets/sass/style.scss';
+
+//skin for demo11
+@import '../demo11/src/assets/sass/global/layout/aside/aside.scss';
+@import '../demo11/src/assets/sass/global/layout/aside/config.scss';
+@import '../demo11/src/assets/sass/global/layout/aside/menu.scss';
+@import '../demo11/src/assets/sass/global/layout/base/base.scss';
+@import '../demo11/src/assets/sass/global/layout/content/content.scss';
+@import '../demo11/src/assets/sass/global/layout/footer/config.scss';
+@import '../demo11/src/assets/sass/global/layout/footer/footer.scss';
+@import '../demo11/src/assets/sass/global/layout/header/base-mobile.scss';
+@import '../demo11/src/assets/sass/global/layout/header/brand.scss';
+@import '../demo11/src/assets/sass/global/layout/header/config.scss';
+@import '../demo11/src/assets/sass/global/layout/header/header.scss';
+@import '../demo11/src/assets/sass/global/layout/header/topbar.scss';
+
+//Global Theme ( used by all pages )
+@import '../demo11/dist/assets/plugins/global/plugins.bundle.css';
+@import '../demo11/dist/assets/css/style.bundle.css';
+
+@import '../demo11/dist/assets/plugins/custom/fullcalendar/fullcalendar.bundle.css';
+
+@import '../demo11/src/assets/sass/global/components/base/_datatable.scss';
