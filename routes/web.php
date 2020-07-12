@@ -11,11 +11,12 @@
 |
 */
 
-Route::get('/', 'EmployersController@index');
+Route::get('/', 'DashBoardController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'DashBoardController@index');
 
 Route::resource('/employers', 'EmployersController');
 Route::get('/employers/{employer}/positions', 'EmployersController@createPosition')->name('employer.position.create');
@@ -31,3 +32,9 @@ Route::get('/positions/{position}/restore', 'PositionController@restore')->name(
 
 Route::resource('/experiences', 'ExperienceController');
 Route::get('/experiences/{experience}/restore', 'ExperienceController@restore')->name('experiences.restore');
+
+Route::resource('expenses/categories', 'CategoryController');
+
+Route::resource('expenses', 'ExpenseController');
+
+Route::resource('invoices', 'InvoiceController');

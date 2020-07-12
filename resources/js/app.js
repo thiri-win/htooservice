@@ -6,6 +6,11 @@
 
 require('./bootstrap');
 
+// import $ from 'jquery';
+// window.$ = window.jQuery = $;
+
+// import 'jquery-ui/ui/widgets/datepicker.js';
+
 window.Vue = require('vue');
 
 /**
@@ -19,8 +24,7 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
-
+// Vue.component('example-component', require('./components/ExampleComponent').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -31,28 +35,35 @@ const app = new Vue({
     el: '#app',
 });
 
-import '../demo11/tools/webpack/vendors/global.js';
-import '../demo11/tools/webpack/scripts.js';
+// import '../demo11/tools/webpack/vendors/global.js';
+// import '../demo11/tools/webpack/scripts.js';
 
-// Global Theme Bundle(used by all pages)
-import '../demo11/dist/assets/plugins/global/plugins.bundle.js';
-import '../demo11/dist/assets/js/scripts.bundle.js';
-import '../js/page.js';
+// import '../demo11/dist/assets/plugins/global/plugins.bundle.js';
+// import '../demo11/dist/assets/js/scripts.bundle.js';
 
-import '../demo11/dist/assets/plugins/custom/fullcalendar/fullcalendar.bundle.js';
-import '../demo11/dist/assets/plugins/custom/gmaps/gmaps.js';
-import '../demo11/dist/assets/js/pages/dashboard.js';
-import '../demo11/dist/assets/js/pages/builder.js';
-import '../demo11/dist/assets/js/pages/my-script.js';
+// import '../demo11/dist/assets/js/pages/builder.js';
+// import '../demo11/dist/assets/js/pages/my-script.js';
 
-//Table
-import '../demo11/src/assets/js/pages/crud/metronic-datatable/base/data-ajax.js';
-import '../demo11/src/assets/js/pages/crud/metronic-datatable/base/data-json.js';
-import '../demo11/src/assets/js/pages/crud/metronic-datatable/base/data-local.js';
-import '../demo11/src/assets/js/pages/crud/metronic-datatable/base/html-table.js';
-import '../demo11/src/assets/js/pages/crud/metronic-datatable/base/local-sort.js';
-import '../demo11/src/assets/js/pages/crud/metronic-datatable/base/translation.js';
-import '../demo11/src/assets/js/pages/crud/metronic-datatable/child/data-ajax.js';
-import '../demo11/src/assets/js/pages/crud/metronic-datatable/child/data-local.js';
+// import '../../node_modules/owl.carousel/dist/owl.carousel.js';
+// import '../demo11/dist/assets/js/pages/dashboard.js';
 
-import '../demo11/dist/assets/js/pages/custom/user/profile.js';
+// import '../../node_modules/jquery/dist/jquery.min.js';
+
+//data-table
+// import '../../node_modules/datatables.net/js/jquery.dataTables.min.js';
+// import '../demo11/dist/assets/js/pages/crud/datatables/basic/scrollable.js';
+
+//chart
+// import '../demo11/dist/assets/js/pages/components/charts/morris-charts.js';
+// import '../../node_modules/morris.js/morris.js';
+// import '../../node_modules/chart.js/dist/Chart.js';
+// import '../../node_modules/chart.js/dist/Chart.bundle.js';
+// import '../demo11/dist/assets/plugins/custom/flot/flot.bundle.js';
+// import '../demo11/dist/assets/js/pages/components/charts/flotcharts.js';
+// import '../demo11/dist/assets/js/pages/components/charts/google-charts.js';
+
+//login-page
+// import '../demo11/dist/assets/js/pages/custom/login/login-general.js';
+
+//live-search
+// import '../../node_modules/bootstrap-select/dist/js/bootstrap-select.js';

@@ -1,143 +1,96 @@
 <!DOCTYPE html>
-
 <html lang="en">
+	<head>
+		<base href="">
+		<meta charset="utf-8" />
+		<title>Metronic | Dashboard</title>
+		<meta name="description" content="Latest updates and statistic charts">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-<!-- begin::Head -->
-<head>
-	<base href="">
-	<meta charset="utf-8" />
-	<title>Metronic | Dashboard</title>
-	<meta name="description" content="Latest updates and statistic charts">
-	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
-	<link rel="shortcut icon" href="{{ asset('public/assets/media/logos/htoo-logo-1.jpg') }}" />
+		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
+	</head>
 
-	<link rel="stylesheet" href="{{ asset('css/app.css') }}" type="text/css">
-</head>
+	<!-- end::Head -->
 
-<!-- end::Head -->
+	<!-- begin::Body -->
+	<body class="kt-page-content-white kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-aside--enabled kt-aside--fixed kt-page--loading">
 
-<!-- begin::Body -->
-<body class="kt-page-content-white kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-subheader--enabled kt-subheader--transparent kt-aside--enabled kt-aside--fixed kt-page--loading">
+		<div id=app>
+					<!-- begin:: Page -->
 
-	<!-- begin:: Page -->
+		<!-- begin:: Header Mobile -->
+		@include('layouts.theme.header-mobile')
+		<!-- end:: Header Mobile -->
 
-	<!-- begin:: Header Mobile -->
-	@include('layouts.theme.header-mobile')
-	<!-- end:: Header Mobile -->
+		<div class="kt-grid kt-grid--hor kt-grid--root">
+			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
+				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
 
+					<!-- begin:: Header -->
+					@include('layouts.theme.header')
+					<!-- end:: Header -->
 
-	<div class="kt-grid kt-grid--hor kt-grid--root">
-		<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
-			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+					<div class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch" id="kt_body">
+						<div class="kt-container  kt-container--fluid  kt-grid kt-grid--ver">
 
-				<!-- begin:: Header -->
-				<div id="kt_header" class="kt-header kt-grid__item  kt-header--fixed " data-ktheader-minimize="on">
-					<div class="kt-container  kt-container--fluid ">
+							<!-- begin:: Aside -->
+							@include('layouts.theme.aside')
+							<!-- end:: Aside -->
 
-						<!-- begin:: Brand -->
-						@include('layouts.theme.brand')
-						<!-- end:: Brand -->
+							<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
 
-						<!-- begin:: Header Topbar -->
-						<div class="kt-header__topbar">
-
-							<!--begin: Search -->
-							{{-- @include('layouts.theme.search') --}}
-							<!--end: Search -->
-
-							<!--begin: Notifications -->
-							@include('layouts.theme.notifications')
-							<!--end: Notifications -->
-
-							<!--begin: Quick actions -->
-							{{-- @include('layouts.theme.quick-action') --}}
-							<!--end: Quick actions -->
-
-							<!--begin: Cart -->
-							{{-- @include('layouts.theme.cart') --}}
-							<!--end: Cart-->
-
-							<!--begin: Quick panel toggler -->
-							@include('layouts.theme.quick-pannel-toggler')
-							<!--end: Quick panel toggler -->
-
-							<!--begin: Language bar -->
-							{{-- @include('layouts.theme.language') --}}
-							<!--end: Language bar -->
-
-							<!--begin: User bar -->
-							@include('layouts.theme.user-bar')
-							<!--end: User bar -->
-						</div>
-
-						<!-- end:: Header Topbar -->
-					</div>
-				</div>
-
-				<!-- end:: Header -->
-				<div class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch" id="kt_body">
-					<div class="kt-container  kt-container--fluid  kt-grid kt-grid--ver">
-
-						<!-- begin:: Aside -->
-						<button class="kt-aside-close " id="kt_aside_close_btn"><i class="la la-close"></i></button>
-						<div class="kt-aside  kt-aside--fixed  kt-grid__item kt-grid kt-grid--desktop kt-grid--hor-desktop" id="kt_aside">
-
-							<!-- begin:: Aside Menu -->
-							@include('layouts.theme.aside-menu')
-							<!-- end:: Aside Menu -->
-						</div>
-
-						<!-- end:: Aside -->
-						<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-
-							<!-- begin:: Subheader -->
-							@include('layouts.theme.subheader')
-							<!-- end:: Subheader -->
-
-							<!-- begin:: Content -->
-							<div class="kt-container  kt-container--fluid  kt-grid__item kt-grid__item--fluid">
+								<!-- begin:: Content -->
 								@yield('content')
+								<!-- end:: Content -->
 							</div>
-							<!-- end:: Content -->
 						</div>
 					</div>
-				</div>
 
-				<!-- begin:: Footer -->
-				@include('layouts.theme.footer')
-				<!-- end:: Footer -->
+					<!-- begin:: Footer -->
+					@include('layouts.theme.footer')
+					<!-- end:: Footer -->
+				</div>
 			</div>
 		</div>
+
+		<!-- end:: Page -->
+
+		<!-- begin::Quick Panel -->
+		@include('layouts.theme.quick-panel')
+		<!-- end::Quick Panel -->
+
+		<!-- begin::Scrolltop -->
+		@include('layouts.theme.scrolltop')
+		<!-- end::Scrolltop -->
+
 	</div>
-
-	<!-- end:: Page -->
-
-	<!-- begin::Quick Panel -->
-	@include('layouts.theme.quick-panel')
-	<!-- end::Quick Panel -->
-
-	<!-- begin::Scrolltop -->
-	@include('layouts.theme.scrolltop')
-	<!-- end::Scrolltop -->
-
-	<!-- begin::Sticky Toolbar -->
-	{{-- @include('layouts.theme.sticky-toolbar') --}}
-	<!-- end::Sticky Toolbar -->
-
-	<!--Begin:: Chat-->
-	@include('layouts.theme.chat')
-	<!--ENd:: Chat-->
-
-	<!--begin::Page Vendors(used by this page) -->
-	<script src="//maps.google.com/maps/api/js?key=AIzaSyBTGnKT7dt597vo9QgeQ7BFhvSRP4eiMSM" type="text/javascript"></script>
-	<!--end::Page Vendors -->
-
+	<script>
+		var KTAppOptions = {
+			"colors": {
+				"state": {
+					"brand": "#5d78ff",
+					"light": "#ffffff",
+					"dark": "#282a3c",
+					"primary": "#5867dd",
+					"success": "#34bfa3",
+					"info": "#36a3f7",
+					"warning": "#ffb822",
+					"danger": "#fd3995"
+				},
+				"base": {
+					"label": ["#c5cbe3", "#a1a8c3", "#3d4465", "#3e4466"],
+					"shape": ["#f0f3ff", "#d9dffa", "#afb4d4", "#646c9a"]
+				}
+			}
+		};
+	</script>
 	<script src="{{ asset('js/app.js') }}"></script>
+	@stack('scripts')
 
-</body>
-<!-- end::Body -->
+		<!--ENd:: Chat-->
+	</body>
 
-@stack('scripts')
-
+	<!-- end::Body -->
 </html>

@@ -2,6 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
+use App\Expense;
 use App\User;
 use Faker\Generator as Faker;
 use Illuminate\Support\Str;
@@ -26,3 +27,21 @@ $factory->define(User::class, function (Faker $faker) {
         'remember_token' => Str::random(10),
     ];
 });
+
+$factory->define(App\Category::class, function (Faker $faker) {
+    return [
+        'title' => $faker->word(3),
+    ];
+});
+
+$factory->define(Expense::class, function (Faker $faker) {
+    $category_id = App\Category::all()->pluck('id')->toArray();
+    return [
+        'date' => $faker->dateTimeThisMonth(),
+        'title' => $faker->sentence,
+        'body' => $faker->paragraph,
+        'category_id' => $faker->randomElement($category_id),
+        'amount' => $faker->numberBetween(2000,30000),
+    ];
+});
+

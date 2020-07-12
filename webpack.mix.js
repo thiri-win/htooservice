@@ -13,7 +13,6 @@ const mix = require('laravel-mix');
 
 mix.js('resources/js/app.js', 'public/js')
    .sass('resources/sass/app.scss', 'public/css');
-   
 
 // copy images folder into laravel public folder
 mix.copyDirectory('resources/demo11/src/assets/media', 'public/assets/media');
