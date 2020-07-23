@@ -1,96 +1,159 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<base href="">
-		<meta charset="utf-8" />
-		<title>Metronic | Dashboard</title>
-		<meta name="description" content="Latest updates and statistic charts">
-		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-		<link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
-		<link rel="shortcut icon" href="assets/media/logos/favicon.ico" />
-	</head>
-
-	<!-- end::Head -->
-
-	<!-- begin::Body -->
-	<body class="kt-page-content-white kt-quick-panel--right kt-demo-panel--right kt-offcanvas-panel--right kt-header--fixed kt-header-mobile--fixed kt-aside--enabled kt-aside--fixed kt-page--loading">
-
-		<div id=app>
-					<!-- begin:: Page -->
-
-		<!-- begin:: Header Mobile -->
-		@include('layouts.theme.header-mobile')
-		<!-- end:: Header Mobile -->
-
-		<div class="kt-grid kt-grid--hor kt-grid--root">
-			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--ver kt-page">
-				<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
-
-					<!-- begin:: Header -->
-					@include('layouts.theme.header')
-					<!-- end:: Header -->
-
-					<div class="kt-body kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-grid--stretch" id="kt_body">
-						<div class="kt-container  kt-container--fluid  kt-grid kt-grid--ver">
-
-							<!-- begin:: Aside -->
-							@include('layouts.theme.aside')
-							<!-- end:: Aside -->
-
-							<div class="kt-content  kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor" id="kt_content">
-
-								<!-- begin:: Content -->
-								@yield('content')
-								<!-- end:: Content -->
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Services</title>
+	<meta name="author" content="David Grzyb">
+	<meta name="description" content="">
+	
+	<!-- Tailwind -->
+	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<style>
+		@import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
+		.font-family-karla { font-family: karla; }
+		.bg-sidebar { background: #3d68ff; }
+		.cta-btn { color: #3d68ff; }
+		.upgrade-btn { background: #1947ee; }
+		.upgrade-btn:hover { background: #0038fd; }
+		.active-nav-link { background: #1947ee; }
+		.nav-item:hover { background: #1947ee; }
+		.account-link:hover { background: #3d68ff; }
+	</style>
+</head>
+<body class="bg-gray-100 font-family-karla flex">
+	
+		<aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
+			<div class="p-6">
+				<a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+			</div>
+			@include('layouts.theme.nav')
+			<a href="#" class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">
+				<i class="fas fa-arrow-circle-up mr-3"></i>
+				Upgrade to Pro!
+			</a>
+		</aside>
+		
+		<div class="w-full flex flex-col h-screen overflow-y-hidden">
+			<!-- Desktop Header -->
+			@include('layouts.theme.desktop_header')
+			
+			<!-- Mobile Header & Nav -->
+			@include('layouts.theme.mobile_header')
+			
+			<div class="w-full overflow-x-hidden border-t flex flex-col bg-gray-100">
+				<main class="w-full flex-grow p-6">
+					
+					@yield('content')
+					
+					{{-- <div class="flex flex-wrap mt-6">
+						<div class="w-full lg:w-1/2 pr-0 lg:pr-2">
+							<p class="text-xl pb-3 flex items-center">
+								<i class="fas fa-plus mr-3"></i> Monthly Reports
+							</p>
+							<div class="p-6 bg-white">
+								<canvas id="chartOne" width="400" height="200"></canvas>
 							</div>
 						</div>
-					</div>
-
-					<!-- begin:: Footer -->
-					@include('layouts.theme.footer')
-					<!-- end:: Footer -->
-				</div>
+						<div class="w-full lg:w-1/2 pl-0 lg:pl-2 mt-12 lg:mt-0">
+							<p class="text-xl pb-3 flex items-center">
+								<i class="fas fa-check mr-3"></i> Resolved Reports
+							</p>
+							<div class="p-6 bg-white">
+								<canvas id="chartTwo" width="400" height="200"></canvas>
+							</div>
+						</div>
+					</div> --}}
+					
+				</main>
+				
+				@include('layouts.theme.footer')
 			</div>
+			
 		</div>
-
-		<!-- end:: Page -->
-
-		<!-- begin::Quick Panel -->
-		@include('layouts.theme.quick-panel')
-		<!-- end::Quick Panel -->
-
-		<!-- begin::Scrolltop -->
-		@include('layouts.theme.scrolltop')
-		<!-- end::Scrolltop -->
-
-	</div>
+	
+	<!-- ChartJS -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js" integrity="sha256-R4pqcOYV8lt7snxMQO/HSbVCFRPMdrhAFMH+vr9giYI=" crossorigin="anonymous"></script>
+	
 	<script>
-		var KTAppOptions = {
-			"colors": {
-				"state": {
-					"brand": "#5d78ff",
-					"light": "#ffffff",
-					"dark": "#282a3c",
-					"primary": "#5867dd",
-					"success": "#34bfa3",
-					"info": "#36a3f7",
-					"warning": "#ffb822",
-					"danger": "#fd3995"
-				},
-				"base": {
-					"label": ["#c5cbe3", "#a1a8c3", "#3d4465", "#3e4466"],
-					"shape": ["#f0f3ff", "#d9dffa", "#afb4d4", "#646c9a"]
+		var chartOne = document.getElementById('chartOne');
+		var myChart = new Chart(chartOne, {
+			type: 'bar',
+			data: {
+				labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+				datasets: [{
+					label: '# of Votes',
+					data: [12, 19, 3, 5, 2, 3],
+					backgroundColor: [
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
+					],
+					borderColor: [
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
 				}
 			}
-		};
+		});
+		
+		var chartTwo = document.getElementById('chartTwo');
+		var myLineChart = new Chart(chartTwo, {
+			type: 'line',
+			data: {
+				labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+				datasets: [{
+					label: '# of Votes',
+					data: [12, 19, 3, 5, 2, 3],
+					backgroundColor: [
+					'rgba(255, 99, 132, 0.2)',
+					'rgba(54, 162, 235, 0.2)',
+					'rgba(255, 206, 86, 0.2)',
+					'rgba(75, 192, 192, 0.2)',
+					'rgba(153, 102, 255, 0.2)',
+					'rgba(255, 159, 64, 0.2)'
+					],
+					borderColor: [
+					'rgba(255, 99, 132, 1)',
+					'rgba(54, 162, 235, 1)',
+					'rgba(255, 206, 86, 1)',
+					'rgba(75, 192, 192, 1)',
+					'rgba(153, 102, 255, 1)',
+					'rgba(255, 159, 64, 1)'
+					],
+					borderWidth: 1
+				}]
+			},
+			options: {
+				scales: {
+					yAxes: [{
+						ticks: {
+							beginAtZero: true
+						}
+					}]
+				}
+			}
+		});
 	</script>
 	<script src="{{ asset('js/app.js') }}"></script>
 	@stack('scripts')
-
-		<!--ENd:: Chat-->
-	</body>
-
-	<!-- end::Body -->
+	
+</body>
 </html>

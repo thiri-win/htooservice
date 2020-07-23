@@ -21,8 +21,14 @@ class DatabaseSeeder extends Seeder
 
         factory(App\Expense::class, 20)->create();
 
+        // factory(App\Employer::class, 10)->create()->each(function ($employer) {
+        //     $employer->experiences->create([
+        //         'content' => 'hello',
+        //     ]);
+        // });
+
         $this->call([
-        	EmployersTableSeeder::class,
+            EmployersTableSeeder::class,
         	PositionsTableSeeder::class,
             ExperiencesTableSeeder::class,
         ]);

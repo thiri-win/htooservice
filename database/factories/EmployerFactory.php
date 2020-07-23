@@ -16,3 +16,4 @@ $factory->define(Employer::class, function (Faker $faker) {
         'about' => $faker->paragraph,
     ];
 });
+

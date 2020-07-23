@@ -40,7 +40,7 @@ class Employer extends Model
 
 	public function experiences()
 	{
-		return $this->belongsToMany(Experience::class)->withPivot('content');
+		return $this->belongsToMany(Experience::class)->withPivot('workshop', 'remark');
 	}
 
 }

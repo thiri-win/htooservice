@@ -16,8 +16,9 @@ class CreateEmployerExperience extends Migration
         Schema::create('employer_experience', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('employer_id');
-            $table->text('content');
             $table->integer('experience_id');
+            $table->string('workshop');
+            $table->text('remark')->nullable();
             $table->timestamps();
         });
     }

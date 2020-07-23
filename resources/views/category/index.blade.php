@@ -1,36 +1,38 @@
 @extends('master')
 
 @section('content')
-    @component('layouts._table')
+
+    @component('layouts.partials._table')
+        @slot('heading')
+            အမျိုးအစားများ
+        @endslot
         @slot('new')
-            <a href="{{ route('categories.create') }}" class="btn btn-brand btn-elevate btn-icon-sm">
-                <i class="la la-plus"></i>
-                New Record
-            </a>
+            {{ route('categories.create') }}
         @endslot
-        @slot('title')
-            Expense Type Setting
-        @endslot
-        @slot('table_head')
+        @slot('thead')
             <tr>
-                <th>ID</th>
-                <th>Category</th>
-                <th>Updated_At</th>
-                <th></th>
+                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
+                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Category</th>
+                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Updated_At</th>
+                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">#</th>
             </tr>
         @endslot
-        @slot('table_body')
+        @slot('tbody')
             @foreach ($categories as $category)
                 <tr>
-                    <td>{{ $category->id }}</td>
-                    <td>{{ $category->title }}</td>
-                    <td>{{ $category->updated_at->diffForHumans() }}</td>
+                    <td class="text-left py-3 px-4">{{ $category->id }}</td>
+                    <td class="text-left py-3 px-4">{{ $category->title }}</td>
+                    <td class="text-left py-3 px-4">{{ $category->updated_at->diffForHumans() }}</td>
                     <td>
-                        <a href="{{ route('categories.edit', $category) }}" class="btn btn-sm btn-warning">Edit</a>
+                        <a class="bg-blue-500 hover:bg-blue-400 p-1 rounded mr-1" href="{{ route('categories.edit', $category) }}">
+                            Edit
+                        </a>
+                        <a class="bg-red-500 hover:bg-red-400 p-1 rounded" href="{{ route('categories.destroy', $category) }}">
+                            Delete
+                        </a>
                     </td>
                 </tr>
             @endforeach
-
         @endslot
     @endcomponent
 @endsection

@@ -1,38 +1,46 @@
 @extends('master')
+
 @section('content')
-    @component('layouts._form')
-        @slot('title')
+
+    @component('layouts.partials._form')
+
+        @slot('heading')
             {{ isset($category) ? 'Category Edit Form' : 'New Category Form'}}
         @endslot
+
         @slot('form')
-            <form class="kt-form"
+
+            <form 
                 action="{{ isset($category) ? route('categories.update', $category) : route('categories.store') }}"
                 method="post">
+
                 @csrf
                 @isset($category)
                     @method('PUT')
                 @endisset
-                <div class="kt-portlet__body">
-                    <div class="form-group">
-                        <label for="title">Title :</label>
-                        <input
+
+                <div class="container">
+
+                    <div class="w-full flex my-2">
+                        <label for="title" class="w-1/3">Title :</label>
+                        <div class="w-2/3">
+                            <input
                             type="text"
                             name="title"
                             id="title"
                             value="{{ old('title', $category->title ?? '') }}"
                             class="form-control @error('title') is-invalid @enderror"
                             placeholder="Title"
-                        >
-                        @error('title')
-                            <p class="text-danger">{{ $message }}</p>
-                        @enderror
+                            autofocus>
+                            @error('title')
+                                <p class="invalid">{{ $message }}</p>
+                            @enderror
+                        </div>
                     </div>
                 </div>
-                <div class="kt-portlet__foot">
-                    <div class="kt-form__actions">
-                        <button type="submit" class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-secondary">Cancel</button>
-                    </div>
+                <div class="w-full flex my-2">
+                    <a href="{{ route('categories.index') }}" class="cancel">Cancel</a>
+                    <button type="submit" class="submit">Submit</button>
                 </div>
             </form>
         @endslot

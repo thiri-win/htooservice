@@ -1,23 +1,60 @@
-// Fonts
-@import url('https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Asap+Condensed:500');
+@tailwind base;
 
-// Variables
+@tailwind components;
+
+@tailwind utilities;
+
 @import 'variables';
 
-// Bootstrap
-@import '~bootstrap/scss/bootstrap';
+@import 'node_modules/@fortawesome/fontawesome-free/scss/fontawesome';
 
-// @import '../demo11/dist/assets/plugins/global/plugins.bundle.css';
-// @import '../demo11/dist/assets/css/style.bundle.css';
+@import 'node_modules/datatables.net-dt/css/jquery.dataTables.min';
 
-//data-table
-// @import '../../node_modules/datatables.net-dt/css/jquery.dataTables.css';
+.submit{
+    @apply bg-blue-500 text-white font-bold py-2 px-4 rounded-full mx-1;
+}
 
-//login-css
-// @import '../demo11/dist/assets/css/pages/login/login-2.css';
+.submit:hover{
+    @apply bg-blue-700;
+}
 
-//morris bar chart
-// @import '../../node_modules/morris.js/morris.css';
+.cancel{
+    @apply border border-blue-500 font-bold py-2 px-4 rounded-full mx-1;
+}
 
-//bootstrap-select
-// @import '../../node_modules/bootstrap-select/dist/css/bootstrap-select.css';
+.cancel:hover {
+    @apply bg-gray-100 border-blue-700;
+}
+
+.invalid {
+    @apply text-red-500 text-sm py-2;
+}
+
+.edit{
+    @apply bg-orange-400 font-bold py-2 px-4 rounded-full mx-1 text-xs;
+}
+
+.delete{
+    @apply bg-red-400 font-bold py-2 px-4 rounded-full mx-1 text-xs;
+}
+
+.delete:hover {
+    @apply bg-red-500;
+}
+
+.new{
+    @apply bg-teal-400 font-bold py-2 px-4 rounded-full mx-1 text-xs;
+}
+
+.new:hover {
+    @apply bg-teal-500;
+}
+
+.modal {
+    transition: opacity 0.25s ease;
+}
+
+// body.modal-active {
+//     overflow-x: hidden;
+//     overflow-y: visible !important;
+// }

@@ -1,37 +1,43 @@
 @extends('master')
 
 @section('content')
-    @component('layouts._table')
-        @slot('new')
-            <a href="{{ route('employers.create') }}" class="btn btn-brand btn-elevate btn-icon-sm">
-                <i class="la la-plus"></i>
-                New Record
-            </a>
-        @endslot
-        @slot('title')
+
+    @component('layouts.partials._table')
+        @slot('heading')
             ဝန်ထမ်းများ
         @endslot
-        @slot('table_head')
+        @slot('new')
+            {{ route('employers.create') }}
+        @endslot
+        @slot('thead')
             <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>NRC</th>
-                <th>Phone</th>
-                <th></th>
+                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
+                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Name</th>
+                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">NRC</th>
+                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Phone</th>
+                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">#</th>
             </tr>
         @endslot
-        @slot('table_body')
-        @foreach ($employers as $employer)
+        @slot('tbody')
+            @foreach ($employers as $employer)
                 <tr>
-                    <td>{{ $employer->id }}</td>
-                    <td>{{ $employer->name }}</td>
-                    <td>{{ $employer->nrc }}</td>
-                    <td>{{ $employer->phone }}</td>
-                    <td nowrap class="d-flex justify-content-around">
-                        <a class="btn btn-sm border btn-warning" href="{{ route('employers.edit', $employer) }}">Edit</a>
-                        <a class="btn btn-sm border btn-danger" href="{{ route('employers.destroy', $employer) }}">Delete</a>
+                    <td class="text-left py-3 px-4">{{ $employer->id }}</td>
+                    <td class="text-left py-3 px-4">
+                        <a href="{{ route('employers.show', $employer) }}">
+                            {{ $employer->name }}
+                        </a>
                     </td>
-                </tr>                
+                    <td class="text-left py-3 px-4">{{ $employer->nrc }}</td>
+                    <td class="text-left py-3 px-4">{{ $employer->phone }}</td>
+                    <td>
+                        <a class="bg-blue-500 hover:bg-blue-400 p-1 rounded mr-1" href="{{ route('employers.edit', $employer) }}">
+                            Edit
+                        </a>
+                        <a class="bg-red-500 hover:bg-red-400 p-1 rounded" href="{{ route('employers.destroy', $employer) }}">
+                            Delete
+                        </a>
+                    </td>
+                </tr>
             @endforeach
         @endslot
     @endcomponent

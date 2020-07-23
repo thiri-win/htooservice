@@ -13,6 +13,7 @@ require('./bootstrap');
 
 window.Vue = require('vue');
 
+window.$ = require('jquery');
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue
@@ -31,39 +32,9 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
-    el: '#app',
-});
+// const app = new Vue({
+//     el: '#app',
+// });
 
-// import '../demo11/tools/webpack/vendors/global.js';
-// import '../demo11/tools/webpack/scripts.js';
-
-// import '../demo11/dist/assets/plugins/global/plugins.bundle.js';
-// import '../demo11/dist/assets/js/scripts.bundle.js';
-
-// import '../demo11/dist/assets/js/pages/builder.js';
-// import '../demo11/dist/assets/js/pages/my-script.js';
-
-// import '../../node_modules/owl.carousel/dist/owl.carousel.js';
-// import '../demo11/dist/assets/js/pages/dashboard.js';
-
-// import '../../node_modules/jquery/dist/jquery.min.js';
-
-//data-table
-// import '../../node_modules/datatables.net/js/jquery.dataTables.min.js';
-// import '../demo11/dist/assets/js/pages/crud/datatables/basic/scrollable.js';
-
-//chart
-// import '../demo11/dist/assets/js/pages/components/charts/morris-charts.js';
-// import '../../node_modules/morris.js/morris.js';
-// import '../../node_modules/chart.js/dist/Chart.js';
-// import '../../node_modules/chart.js/dist/Chart.bundle.js';
-// import '../demo11/dist/assets/plugins/custom/flot/flot.bundle.js';
-// import '../demo11/dist/assets/js/pages/components/charts/flotcharts.js';
-// import '../demo11/dist/assets/js/pages/components/charts/google-charts.js';
-
-//login-page
-// import '../demo11/dist/assets/js/pages/custom/login/login-general.js';
-
-//live-search
-// import '../../node_modules/bootstrap-select/dist/js/bootstrap-select.js';
+import 'alpinejs';
+import '../../node_modules/datatables.net/js/jquery.dataTables.min';
