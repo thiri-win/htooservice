@@ -46,7 +46,6 @@ class EmployerExperienceController extends Controller
             'workshop' => 'required',
             'remark' => 'sometimes',
             ]);
-        // dd($validated);
         $employer->experiences()->attach($validatedExpId, $validated);
         return redirect(route('employers.show', $employer));
     }
@@ -93,6 +92,8 @@ class EmployerExperienceController extends Controller
      */
     public function destroy(Employer $employer, Experience $experience)
     {
+        dd($employer->experiences()->first());
+        // dd($employer->experiences()->wherePivot('workshop', '=', $experience->pivot->workshop));
         $employer->experiences()->detach($experience);
         return redirect(route('employers.show', $employer));
     }

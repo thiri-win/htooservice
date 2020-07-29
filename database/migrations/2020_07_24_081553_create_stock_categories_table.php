@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateEmployerExperience extends Migration
+class CreateStockCategoriesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,11 @@ class CreateEmployerExperience extends Migration
      */
     public function up()
     {
-        Schema::create('employer_experience', function (Blueprint $table) {
+        Schema::create('stock_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('employer_id');
-            $table->integer('experience_id');
-            $table->string('workshop');
-            $table->text('remark')->nullable();
+            $table->string('title');
+            $table->string('remark');
             $table->timestamps();
-
-            $table->unique(['employer_id', 'experience_id', 'workshop']);
         });
     }
 
@@ -32,6 +28,6 @@ class CreateEmployerExperience extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('employer_experience');
+        Schema::dropIfExists('stock_categories');
     }
 }

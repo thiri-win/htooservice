@@ -65,12 +65,20 @@
 						<tbody>
 							@forelse ($employer->experiences as $experience)
 								<tr>
+									<td class="px-4 py-2 border border-gray-500">{{ $experience->id }}</td>
 									<td class="px-4 py-2 border border-gray-500">{{ $experience->level }}</td>
 									<td class="px-4 py-2 border border-gray-500">{{ $experience->pivot->workshop }}</td>
 									<td class="px-4 py-2 border border-gray-500">{{ $experience->pivot->remark }}</td>
 									<td class="px-4 py-2 border border-gray-500 whitespace-no-wrap">
 										<a href="#" class="edit">Edit</a>
-										<a href="#" class="delete">Delete</a>
+										<form 
+											action="{{ route('employer.experiences.destroy', ['employer' => $employer, 'experience' => $experience]) }}" 
+											method="post"
+											class="inline">
+											@csrf
+											@method('DELETE')
+											<button type="submit" class="delete">Delete</button>
+										</form>
 									</td>
 								</tr>
 							@empty
@@ -102,7 +110,14 @@
 									<td class="px-4 py-2 border border-gray-500">{{ $position->created_at->format('d/m/Y') }}</td>
 									<td class="px-4 py-2 border border-gray-500 whitespace-no-wrap">
 										<a href="#" class="edit">Edit</a>
-										<a href="#" class="delete">Delete</a>
+										<form 
+											action="{{ route('employer.positions.destroy', ['employer' => $employer, 'position' => $position]) }}" 
+											method="post"
+											class="inline">
+											@csrf
+											@method('DELETE')
+											<button type="submit" class="delete">Delete</button>
+										</form>
 									</td>
 								</tr>
 							@empty

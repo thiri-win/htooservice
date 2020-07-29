@@ -2,7 +2,7 @@
     <h1 class="text-xl text-black pb-3">
         {{ $heading }}
     </h1>
-    <a href="{{ $new }}" class="bg-blue-500 hover:bg-blue-400 px-3 py-2 rounded">New</a>
+    <a href="{{ $new }}" class="new">New</a>
 </div>
 
 <div class="w-full mt-3 shadow-lg">

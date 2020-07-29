@@ -24375,6 +24375,7 @@ table.dataTable, table.dataTable th, table.dataTable td {
   border-radius: 9999px;
   margin-left: 0.25rem;
   margin-right: 0.25rem;
+  font-size: 0.875rem;
 }
 
 .submit:hover {
@@ -24396,6 +24397,7 @@ table.dataTable, table.dataTable th, table.dataTable td {
   border-radius: 9999px;
   margin-left: 0.25rem;
   margin-right: 0.25rem;
+  font-size: 0.875rem;
 }
 
 .cancel:hover {
@@ -24428,7 +24430,13 @@ table.dataTable, table.dataTable th, table.dataTable td {
   border-radius: 9999px;
   margin-left: 0.25rem;
   margin-right: 0.25rem;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
+}
+
+.edit:hover {
+  --bg-opacity: 1;
+  background-color: #ed8936;
+  background-color: rgba(237, 137, 54, var(--bg-opacity));
 }
 
 .delete {
@@ -24443,7 +24451,7 @@ table.dataTable, table.dataTable th, table.dataTable td {
   border-radius: 9999px;
   margin-left: 0.25rem;
   margin-right: 0.25rem;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .delete:hover {
@@ -24464,7 +24472,7 @@ table.dataTable, table.dataTable th, table.dataTable td {
   border-radius: 9999px;
   margin-left: 0.25rem;
   margin-right: 0.25rem;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .new:hover {

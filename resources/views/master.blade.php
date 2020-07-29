@@ -25,13 +25,9 @@
 	
 		<aside class="relative bg-sidebar h-screen w-64 hidden sm:block shadow-xl">
 			<div class="p-6">
-				<a href="index.html" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Admin</a>
+				<a href="/" class="text-white text-3xl font-semibold uppercase hover:text-gray-300">Services</a>
 			</div>
 			@include('layouts.theme.nav')
-			<a href="#" class="absolute w-full upgrade-btn bottom-0 active-nav-link text-white flex items-center justify-center py-4">
-				<i class="fas fa-arrow-circle-up mr-3"></i>
-				Upgrade to Pro!
-			</a>
 		</aside>
 		
 		<div class="w-full flex flex-col h-screen overflow-y-hidden">

@@ -11,7 +11,11 @@
 |
 */
 
-Route::get('/', 'DashBoardController@index');
+// Route::get('/', 'DashBoardController@index');
+
+use App\Http\Controllers\EmployersController;
+
+Route::get('/', 'EmployersController@index');
 
 Auth::routes();
 
@@ -43,3 +47,9 @@ Route::resource('expenses/categories', 'CategoryController');
 Route::resource('expenses', 'ExpenseController');
 
 Route::resource('invoices', 'InvoiceController');
+
+Route::resource('stock-categories', 'StockCategoryController');
+
+Route::resource('stocks', 'StockController');
+
+Route::resource('sales', 'SaleController');

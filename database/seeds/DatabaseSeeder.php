@@ -21,6 +21,11 @@ class DatabaseSeeder extends Seeder
 
         factory(App\Expense::class, 20)->create();
 
+        factory(App\StockCategory::class, 10)->create();
+
+        factory(App\Stock::class, 20)->create();
+        factory(App\Sale::class, 30)->create();
+
         // factory(App\Employer::class, 10)->create()->each(function ($employer) {
         //     $employer->experiences->create([
         //         'content' => 'hello',

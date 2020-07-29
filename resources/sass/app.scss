@@ -11,7 +11,7 @@
 @import 'node_modules/datatables.net-dt/css/jquery.dataTables.min';
 
 .submit{
-    @apply bg-blue-500 text-white font-bold py-2 px-4 rounded-full mx-1;
+    @apply bg-blue-500 text-white font-bold py-2 px-4 rounded-full mx-1 text-sm;
 }
 
 .submit:hover{
@@ -19,7 +19,7 @@
 }
 
 .cancel{
-    @apply border border-blue-500 font-bold py-2 px-4 rounded-full mx-1;
+    @apply border border-blue-500 font-bold py-2 px-4 rounded-full mx-1 text-sm;
 }
 
 .cancel:hover {
@@ -31,11 +31,15 @@
 }
 
 .edit{
-    @apply bg-orange-400 font-bold py-2 px-4 rounded-full mx-1 text-xs;
+    @apply bg-orange-400 font-bold py-2 px-4 rounded-full mx-1 text-sm;
+}
+
+.edit:hover {
+    @apply bg-orange-500;
 }
 
 .delete{
-    @apply bg-red-400 font-bold py-2 px-4 rounded-full mx-1 text-xs;
+    @apply bg-red-400 font-bold py-2 px-4 rounded-full mx-1 text-sm;
 }
 
 .delete:hover {
@@ -43,7 +47,7 @@
 }
 
 .new{
-    @apply bg-teal-400 font-bold py-2 px-4 rounded-full mx-1 text-xs;
+    @apply bg-teal-400 font-bold py-2 px-4 rounded-full mx-1 text-sm;
 }
 
 .new:hover {

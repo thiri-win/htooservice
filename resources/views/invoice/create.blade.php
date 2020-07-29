@@ -1,3 +1,7 @@
-<div id="invoice">
-    @include('invoice._form')
-</div>
+@extends('master')
+
+@section('content')
+    <div class="container">
+        
+    </div>
+@endsection

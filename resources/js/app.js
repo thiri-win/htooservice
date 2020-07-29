@@ -35,6 +35,7 @@ window.$ = require('jquery');
 // const app = new Vue({
 //     el: '#app',
 // });
+require('@fortawesome/fontawesome-free/js/all.js');
 
 import 'alpinejs';
 import '../../node_modules/datatables.net/js/jquery.dataTables.min';

@@ -4,14 +4,13 @@
 	@component('layouts.partials._form')
 
 		@slot('heading')
-			{{ isset($empense) ? 'Expense Edit Form' : 'New Expense Form'}}
+			{{ isset($experience) ? 'Expense Edit Form' : 'New Expense Form'}}
 		@endslot
 
 		@slot('form')
 			<form 
 			action="{{ isset($experience) ? route('experiences.update', $experience->id) : route('experiences.store') }}" 
-			method="POST"
-			enctype="multipart/form-data">
+			method="POST">
 
 			@csrf
 			@if (isset($experience))
