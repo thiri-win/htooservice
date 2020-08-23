@@ -8,12 +8,11 @@
 		<label for="position" class="w-1/4">Position</label>
 		<select name="position_id" id="position_id" class="w-3/4">
 			@foreach ($positions as $position)
-			<option value="{{ $position->id }}">{{ $position->jobtitle }}</option>
+				<option value="{{ $position->id }}">{{ $position->jobtitle }}</option>
 			@endforeach
 		</select>
 	</div>
 	<div class="px-4 pb-4 flex justify-end">
-		<button type="button" class="cancel text-xs" data-dismiss="modal">Close</button>
 		<button type="submit" class="submit text-xs">Submit</button>
 	</div>
 </form>

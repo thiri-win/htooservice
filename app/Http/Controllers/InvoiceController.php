@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreInvoice;
 use App\Invoice;
+use App\StockCategory;
 use Illuminate\Http\Request;
+use LengthException;
 
 class InvoiceController extends Controller
 {
@@ -26,7 +29,9 @@ class InvoiceController extends Controller
      */
     public function create()
     {
-        return view('invoice.create');
+        return view('invoice.create', [
+            'stock_categories' => StockCategory::all(),
+        ]);
     }
 
     /**
@@ -35,9 +40,23 @@ class InvoiceController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
-    {
-        //
+    public function store(StoreInvoice $request)
+    {        
+        dd(request()->all());
+        $invoice = Invoice::create($request->all());
+
+        $count = count($request->description);
+
+        for ($i=0; $i < $count ; $i++) { 
+            $invoice->details()->create([
+                'description' => $request->description[$i],
+                'quantity' => $request->quantity[$i],
+                'unit_price' => $request->unit_price[$i],
+                'total' => $request->total[$i],
+            ]);
+        }
+        
+        return redirect(route('invoices.index'));
     }
 
     /**
@@ -48,7 +67,9 @@ class InvoiceController extends Controller
      */
     public function show(Invoice $invoice)
     {
-        //
+        return view('invoice.show', [
+            'invoice' => $invoice,
+        ]);
     }
 
     /**

@@ -65,7 +65,6 @@
 						<tbody>
 							@forelse ($employer->experiences as $experience)
 								<tr>
-									<td class="px-4 py-2 border border-gray-500">{{ $experience->id }}</td>
 									<td class="px-4 py-2 border border-gray-500">{{ $experience->level }}</td>
 									<td class="px-4 py-2 border border-gray-500">{{ $experience->pivot->workshop }}</td>
 									<td class="px-4 py-2 border border-gray-500">{{ $experience->pivot->remark }}</td>
@@ -135,7 +134,6 @@
 	</div>
 
 @include('layouts.partials._modal')
-{{-- @include('modal') --}}
 
 @endsection
 

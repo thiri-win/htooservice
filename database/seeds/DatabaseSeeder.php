@@ -32,6 +32,9 @@ class DatabaseSeeder extends Seeder
         //     ]);
         // });
 
+        factory(App\Invoice::class,5)->create();
+        factory(App\InvoiceDetail::class,17)->create();
+
         $this->call([
             EmployersTableSeeder::class,
         	PositionsTableSeeder::class,

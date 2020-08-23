@@ -23,7 +23,6 @@
 		</div>
 	</div>
 	<div class="px-4 pb-4 flex justify-end">
-		<button type="button" class="cancel text-xs" data-dismiss="modal">Close</button>
 		<button type="submit" class="submit text-xs">Submit</button>
 	</div>
 </form>

@@ -10,12 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-// Route::get('/', 'DashBoardController@index');
-
-use App\Http\Controllers\EmployersController;
-
-Route::get('/', 'EmployersController@index');
+Route::get('/', 'DashBoardController@index');
 
 Auth::routes();
 
@@ -24,17 +19,17 @@ Route::get('/dashboard', 'DashBoardController@index');
 
 Route::resource('/employers', 'EmployersController');
 
-// Route::get('/employers/{employer}/positions', 'EmployersController@createPosition')->name('employer.position.create');
-// Route::post('/employers/{employer}/positions', 'EmployersController@storePosition')->name('employer.position.store');
-// Route::get('/employers/{employer}/positions/{position}', 'EmployersController@detachPosition')->name('employer.position.detach');
+Route::get('/employers/{employer}/positions', 'EmployersController@createPosition')->name('employer.position.create');
+Route::post('/employers/{employer}/positions', 'EmployersController@storePosition')->name('employer.position.store');
+Route::get('/employers/{employer}/positions/{position}', 'EmployersController@detachPosition')->name('employer.position.detach');
 
 Route::post('employers/{employer}/image', 'EmployerAvatarController@store')->name('employer.image.store');
 Route::resource('employers/{employer}/experiences', 'EmployerExperienceController', ['as' => 'employer']);
 Route::resource('employers/{employer}/positions', 'EmployerPositionController', ['as' => 'employer']);
 
-// Route::get('/employers/{employer}/experiences', 'EmployersController@createExperience')->name('employer.experience.create');
-// Route::post('/employers/{employer}/experiences', 'EmployersController@storeExperience')->name('employer.experience.store');
-// Route::get('/employers/{employer}/experiences/{experience}', 'EmployersController@detachExperience')->name('employer.experience.detach');
+Route::get('/employers/{employer}/experiences', 'EmployersController@createExperience')->name('employer.experience.create');
+Route::post('/employers/{employer}/experiences', 'EmployersController@storeExperience')->name('employer.experience.store');
+Route::get('/employers/{employer}/experiences/{experience}', 'EmployersController@detachExperience')->name('employer.experience.detach');
 
 Route::resource('/positions', 'PositionController');
 Route::get('/positions/{position}/restore', 'PositionController@restore')->name('positions.restore');

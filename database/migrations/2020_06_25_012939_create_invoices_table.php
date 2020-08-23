@@ -16,14 +16,14 @@ class CreateInvoicesTable extends Migration
         Schema::create('invoices', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->date('date');
-            $table->string('client');
+            $table->string('client')->nullable();
             $table->string('car_make');
             $table->string('car_no');
             $table->string('car_model');
-            $table->string('phone');
+            $table->string('phone')->nullable();
             $table->integer('sub_total');
-            $table->integer('advanced');
-            $table->integer('discount');
+            $table->integer('advanced')->default(0);
+            $table->integer('discount')->default(0);
             $table->integer('grand_total');
             $table->timestamps();
         });

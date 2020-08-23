@@ -11,7 +11,6 @@
         @endslot
         @slot('thead')
             <tr>
-                <th class="text-left py-3 px-4 uppercase font-semibold text-sm">ID</th>
                 <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Date</th>
                 <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Client</th>
                 <th class="text-left py-3 px-4 uppercase font-semibold text-sm">Phone</th>
@@ -24,8 +23,9 @@
         @slot('tbody')
             @foreach ($invoices as $invoice)
                 <tr>
-                    <td class="text-left py-3 px-4">{{ $invoice->id }}</td>
-                    <td class="text-left py-3 px-4">{{ $invoice->date }}</td>
+                    <td class="text-left py-3 px-4">
+                        <a href="{{ route('invoices.show', $invoice) }}">{{ $invoice->date }}</a>
+                    </td>                    
                     <td class="text-left py-3 px-4">{{ $invoice->client }}</td>
                     <td class="text-left py-3 px-4">{{ $invoice->phone }}</td>
                     <td class="text-left py-3 px-4">{{ $invoice->car_make }}</td>
