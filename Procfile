@@ -1,1 +1,1 @@
-web: home/thiri/code/htooservice  public/
+web: /home/thiri/code/htooservice  public/
