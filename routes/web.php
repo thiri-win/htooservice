@@ -17,8 +17,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/dashboard', 'DashBoardController@index');
 
-Route::resource('/employers', 'EmployersController');
-
+Route::resource('employers', 'EmployersController');
 Route::get('/employers/{employer}/positions', 'EmployersController@createPosition')->name('employer.position.create');
 Route::post('/employers/{employer}/positions', 'EmployersController@storePosition')->name('employer.position.store');
 Route::get('/employers/{employer}/positions/{position}', 'EmployersController@detachPosition')->name('employer.position.detach');
@@ -31,7 +30,7 @@ Route::get('/employers/{employer}/experiences', 'EmployersController@createExper
 Route::post('/employers/{employer}/experiences', 'EmployersController@storeExperience')->name('employer.experience.store');
 Route::get('/employers/{employer}/experiences/{experience}', 'EmployersController@detachExperience')->name('employer.experience.detach');
 
-Route::resource('/positions', 'PositionController');
+Route::resource('positions', 'PositionController');
 Route::get('/positions/{position}/restore', 'PositionController@restore')->name('positions.restore');
 
 Route::resource('/experiences', 'ExperienceController');
