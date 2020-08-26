@@ -8,7 +8,7 @@
 	<meta name="description" content="">
 	
 	<!-- Tailwind -->
-	<link href="{{ asset('css/app.css') }}" rel="stylesheet">
+	<link href="{{ secure_asset('css/app.css') }}" rel="stylesheet">
 	<style>
 		@import url('https://fonts.googleapis.com/css?family=Karla:400,700&display=swap');
 		.font-family-karla { font-family: karla; }
@@ -148,7 +148,7 @@
 			}
 		});
 	</script>
-	<script src="{{ asset('js/app.js') }}"></script>
+	<script src="{{ secure_asset('js/app.js') }}"></script>
 	@stack('scripts')
 	
 </body> 
