@@ -1,89 +1,104 @@
 @extends('master')
 
 @section('content')
-    <div class="kt-container  kt-container--fluid
-      kt-grid__item kt-grid__item--fluid">
-        <div class="row">
-            <div class="col-lg-12">
-                <!--begin::Portlet-->
-                <div class="kt-portlet kt-portlet--tab">
-                    <div class="kt-portlet__head">
-                        <div class="kt-portlet__head-label">
-                            <span class="kt-portlet__head-icon kt-hidden">
-                                <i class="la la-gear"></i>
-                            </span>
-                            <h3 class="kt-portlet__head-title">
-                                Bar Chart
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="kt-portlet__body">
-                        <div id="kt_morris_3" style="height:500px;"></div>
-                    </div>
-                </div>
-                <!--end::Portlet-->
-
-                <div class="kt-portlet">
-                    <div class="kt-portlet__head">
-                        <div class="kt-portlet__head-label">
-                            <span class="kt-portlet__head-icon kt-hidden">
-                                <i class="la la-gear"></i>
-                            </span>
-                            <h3 class="kt-portlet__head-title">
-                                Pie Chart 1
-                            </h3>
-                        </div>
-                    </div>
-                    <div class="kt-portlet__body">
-                        <div id="kt_flotcharts" style="height: 300px;"></div>
-                    </div>
-                </div>
+    <div class="flex flex-wrap mt-6">
+        <div class="w-full lg:w-1/2 pr-0 lg:pr-2">
+            <p class="text-xl pb-3 flex items-center">
+                <i class="fas fa-plus mr-3"></i> Monthly Reports
+            </p>
+            <div class="p-6 bg-white">
+                <canvas id="chartOne" width="400" height="200"></canvas>
+            </div>
+        </div>
+        <div class="w-full lg:w-1/2 pl-0 lg:pl-2 mt-12 lg:mt-0">
+            <p class="text-xl pb-3 flex items-center">
+                <i class="fas fa-check mr-3"></i> Resolved Reports
+            </p>
+            <div class="p-6 bg-white">
+                <canvas id="chartTwo" width="400" height="200"></canvas>
             </div>
         </div>
     </div>
 @endsection
 
 @push('scripts')
+    
     <script>
-        var barData=[
-            { y: '2006', a: 100, b: 90 },
-            { y: '2007', a: 75,  b: 65 },
-            { y: '2008', a: 50,  b: 40 },
-            { y: '2009', a: 75,  b: 65 },
-            { y: '2010', a: 50,  b: 40 },
-            { y: '2011', a: 75,  b: 65 },
-            { y: '2012', a: 100, b: 90 },
-            { y: '2013', a: 100, b: 90 },
-            { y: '2014', a: 75,  b: 65 },
-            { y: '2015', a: 50,  b: 40 },
-            { y: '2016', a: 75,  b: 65 },
-            { y: '2017', a: 50,  b: 40 }
-        ];
-        new Morris.Bar({
-            element: 'kt_morris_3',
-            data: barData,
-            xkey: 'y',
-            ykeys: ['a', 'b'],
-            labels: ['Series A', 'Series B'],
-            barColors: ['aqua', 'blue']
-        });
-
-        $test = <?php echo $categories ?>;
-        var dataSet=[];
-        $test.forEach(category => {
-            dataSet.push({
-                label: category['title'],
-                data: category['total'],
-            })
-        });
-        $.plot('#kt_flotcharts', dataSet, {
-            series: {
-                pie: {
-                    show: true
+        var chartOne = document.getElementById('chartOne');
+        var myChart = new Chart(chartOne, {
+            type: 'bar',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
                 }
             }
         });
-
+        
+        var chartTwo = document.getElementById('chartTwo');
+        var myLineChart = new Chart(chartTwo, {
+            type: 'line',
+            data: {
+                labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
+                datasets: [{
+                    label: '# of Votes',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                    'rgba(255, 99, 132, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                    'rgba(255, 99, 132, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
     </script>
 
 @endpush

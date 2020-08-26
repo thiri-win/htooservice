@@ -10,7 +10,7 @@
 
 @import 'node_modules/datatables.net-dt/css/jquery.dataTables.min';
 
-input, textarea {
+input, textarea { 
     @apply bg-gray-100 border border-teal-700 border-opacity-25 p-1 rounded;
 }
 
@@ -73,6 +73,20 @@ td {
 .modal {
     transition: opacity 0.25s ease;
 }
+
+.bg-sidebar { background: #3d68ff; }
+
+.cta-btn { color: #3d68ff; }
+
+.upgrade-btn { background: #1947ee; }
+
+.upgrade-btn:hover { background: #0038fd; }
+
+.active-nav-link { background: #1947ee; }
+
+.nav-item:hover { background: #1947ee; }
+
+.account-link:hover { background: #3d68ff; }
 
 // body.modal-active {
 //     overflow-x: hidden;
