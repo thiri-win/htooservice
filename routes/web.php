@@ -10,40 +10,43 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/', 'DashBoardController@index');
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-Route::get('/dashboard', 'DashBoardController@index');
+Route::middleware('auth')->group(function() {
 
-Route::resource('employers', 'EmployersController');
-Route::get('/employers/{employer}/positions', 'EmployersController@createPosition')->name('employer.position.create');
-Route::post('/employers/{employer}/positions', 'EmployersController@storePosition')->name('employer.position.store');
-Route::get('/employers/{employer}/positions/{position}', 'EmployersController@detachPosition')->name('employer.position.detach');
+    Route::get('/', 'DashBoardController@index');
 
-Route::post('employers/{employer}/image', 'EmployerAvatarController@store')->name('employer.image.store');
-Route::resource('employers/{employer}/experiences', 'EmployerExperienceController', ['as' => 'employer']);
-Route::resource('employers/{employer}/positions', 'EmployerPositionController', ['as' => 'employer']);
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/dashboard', 'DashBoardController@index');
 
-Route::get('/employers/{employer}/experiences', 'EmployersController@createExperience')->name('employer.experience.create');
-Route::post('/employers/{employer}/experiences', 'EmployersController@storeExperience')->name('employer.experience.store');
-Route::get('/employers/{employer}/experiences/{experience}', 'EmployersController@detachExperience')->name('employer.experience.detach');
+    Route::resource('employers', 'EmployersController');
+    Route::get('/employers/{employer}/positions', 'EmployersController@createPosition')->name('employer.position.create');
+    Route::post('/employers/{employer}/positions', 'EmployersController@storePosition')->name('employer.position.store');
+    Route::get('/employers/{employer}/positions/{position}', 'EmployersController@detachPosition')->name('employer.position.detach');
 
-Route::resource('positions', 'PositionController');
-Route::get('/positions/{position}/restore', 'PositionController@restore')->name('positions.restore');
+    Route::post('employers/{employer}/image', 'EmployerAvatarController@store')->name('employer.image.store');
+    Route::resource('employers/{employer}/experiences', 'EmployerExperienceController', ['as' => 'employer']);
+    Route::resource('employers/{employer}/positions', 'EmployerPositionController', ['as' => 'employer']);
 
-Route::resource('/experiences', 'ExperienceController');
-Route::get('/experiences/{experience}/restore', 'ExperienceController@restore')->name('experiences.restore');
+    Route::get('/employers/{employer}/experiences', 'EmployersController@createExperience')->name('employer.experience.create');
+    Route::post('/employers/{employer}/experiences', 'EmployersController@storeExperience')->name('employer.experience.store');
+    Route::get('/employers/{employer}/experiences/{experience}', 'EmployersController@detachExperience')->name('employer.experience.detach');
 
-Route::resource('expenses/categories', 'CategoryController');
+    Route::resource('positions', 'PositionController');
+    Route::get('/positions/{position}/restore', 'PositionController@restore')->name('positions.restore');
 
-Route::resource('expenses', 'ExpenseController');
+    Route::resource('/experiences', 'ExperienceController');
+    Route::get('/experiences/{experience}/restore', 'ExperienceController@restore')->name('experiences.restore');
 
-Route::resource('invoices', 'InvoiceController');
+    Route::resource('expenses/categories', 'CategoryController');
 
-Route::resource('stock-categories', 'StockCategoryController');
+    Route::resource('expenses', 'ExpenseController');
 
-Route::resource('stocks', 'StockController');
+    Route::resource('invoices', 'InvoiceController');
 
-Route::resource('sales', 'SaleController');
+    Route::resource('stock-categories', 'StockCategoryController');
+
+    Route::resource('stocks', 'StockController');
+
+    Route::resource('sales', 'SaleController');
+});

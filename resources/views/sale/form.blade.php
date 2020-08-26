@@ -41,7 +41,7 @@
 							@foreach ($stock_categories as $category)
 								<option 
 									data-instock="{{ $category->instocks() }}"
-									data-unit="{{ $category->stocks->last()->price }}"
+									data-unit="{{ $category->stocks->last()->price ?? '' }}"
 									value="{{ $category->id }}"
 									@if (isset($sale))
 										{{ $category->id == $sale->stock_category_id ? 'selected' : '' }}
