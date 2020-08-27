@@ -5,17 +5,17 @@
     @component('layouts.partials._form')
 
         @slot('heading')
-            {{ isset($category) ? 'Category Edit Form' : 'New Category Form'}}
+            {{ isset($expenseCategory) ? 'Category Edit Form' : 'New Category Form'}}
         @endslot
 
         @slot('form')
 
             <form 
-                action="{{ isset($category) ? route('categories.update', $category) : route('categories.store') }}"
+                action="{{ isset($expenseCategory) ? route('expense-categories.update', $expenseCategory) : route('expense-categories.store') }}"
                 method="post">
 
                 @csrf
-                @isset($category)
+                @isset($expenseCategory)
                     @method('PUT')
                 @endisset
 
@@ -28,7 +28,7 @@
                             type="text"
                             name="title"
                             id="title"
-                            value="{{ old('title', $category->title ?? '') }}"
+                            value="{{ old('title', $expenseCategory->title ?? '') }}"
                             class="form-control @error('title') is-invalid @enderror"
                             placeholder="Title"
                             autofocus>
@@ -39,7 +39,7 @@
                     </div>
                 </div>
                 <div class="w-full flex my-2">
-                    <a href="{{ route('categories.index') }}" class="cancel">Cancel</a>
+                    <a href="{{ route('expense-categories.index') }}" class="cancel">Cancel</a>
                     <button type="submit" class="submit">Submit</button>
                 </div>
             </form>

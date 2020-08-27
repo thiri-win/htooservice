@@ -11,19 +11,19 @@
     Incomes
 </a>
 <a href="{{ route('invoices.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-6 nav-item {{ active_nav('invoices.index') }}">
-    <i class="fas fa-table mr-3"></i>
+    <i class="fas fa-piggy-bank mr-3"></i>
     Invoices
 </a>
 <a href="{{ route('expenses.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-6 nav-item {{ active_nav('expenses.index') }}">
-    <i class="fas fa-align-left mr-3"></i>
+    <i class="fas fa-hand-holding-usd mr-3"></i>
     ကုန်ကျစရိတ်များ
 </a>
 <a href="{{ route('stocks.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-6 nav-item {{ active_nav('stocks.index') }}">
-    <i class="fas fa-table mr-3"></i>
+    <i class="fas fa-store-alt mr-3"></i>
     ပစ္စည်းအဝယ်စာရင်း
 </a>
 <a href="{{ route('sales.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-6 nav-item {{ active_nav('sales.index') }}">
-    <i class="fas fa-table mr-3"></i>
+    <i class="fas fa-coins mr-3"></i>
     ပစ္စည်းအရောင်းစာရင်း
 </a>
 
@@ -39,11 +39,11 @@
     <i class="fas fa-cogs mr-3"></i>
     Positions Level
 </a>
-<a href="{{ route('categories.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-6 nav-item {{ active_nav('categories.index') }}">
+<a href="{{ route('expense-categories.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-6 nav-item {{ active_nav('categories.index') }}">
     <i class="fas fa-cogs mr-3"></i>
-    Expense Category
+    ကုန်ကျစရိတ်အမျိုးအစား
 </a>
 <a href="{{ route('stock-categories.index') }}" class="flex items-center text-white opacity-75 hover:opacity-100 py-2 pl-6 nav-item {{ active_nav('stock-categories.index') }}">
     <i class="fas fa-cogs mr-3"></i>
-    Stock Category
+    ကုန်ပစ္စည်းအမျိုးအစား
 </a>

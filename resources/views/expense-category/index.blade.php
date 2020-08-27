@@ -7,7 +7,7 @@
             အမျိုးအစားများ
         @endslot
         @slot('new')
-            {{ route('categories.create') }}
+            {{ route('expense-categories.create') }}
         @endslot
         @slot('thead')
             <tr>
@@ -18,16 +18,16 @@
             </tr>
         @endslot
         @slot('tbody')
-            @foreach ($categories as $category)
+            @foreach ($expenseCategories as $category)
                 <tr>
                     <td class="text-left py-3 px-4">{{ $category->id }}</td>
                     <td class="text-left py-3 px-4">{{ $category->title }}</td>
                     <td class="text-left py-3 px-4">{{ $category->updated_at->diffForHumans() }}</td>
-                    <td>
-                        <a class="bg-blue-500 hover:bg-blue-400 p-1 rounded mr-1" href="{{ route('categories.edit', $category) }}">
+                    <td class="whitespace-no-wrap">
+                        <a class="edit text-xs" href="{{ route('expense-categories.edit', $category) }}">
                             Edit
                         </a>
-                        <a class="bg-red-500 hover:bg-red-400 p-1 rounded" href="{{ route('categories.destroy', $category) }}">
+                        <a class="delete text-xs" href="{{ route('expense-categories.destroy', $category) }}">
                             Delete
                         </a>
                     </td>

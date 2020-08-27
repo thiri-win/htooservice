@@ -24381,6 +24381,10 @@ button:focus {
   outline: 0;
 }
 
+th {
+  white-space: nowrap;
+}
+
 td {
   padding: 0.5rem;
 }

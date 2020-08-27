@@ -11,14 +11,16 @@
         @endslot
         @slot('thead')
             <tr>
+                <th>ID</th>
                 <th class="text-left py-3 px-4 uppercase font-semibold text-sm">အမျိုးအစား</th>
                 <th class="text-left py-3 px-4 uppercase font-semibold text-sm">မှတ်ချက်</th>
                 <th class="text-left py-3 px-4 uppercase font-semibold text-sm">#</th>
             </tr>
         @endslot
         @slot('tbody')
-            @foreach ($stock_categories as $category)
+            @foreach ($stockCategories as $category)
                 <tr>
+                    <td class="text-left py-3 px-4">{{ $category->id }}</td>
                     <td class="text-left py-3 px-4">{{ $category->title }}</td>
                     <td class="text-left py-3 px-4">{{ $category->remark }}</td>
                     <td class="whitespace-no-wrap">

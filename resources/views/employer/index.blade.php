@@ -29,11 +29,11 @@
                     </td>
                     <td class="text-left py-3 px-4">{{ $employer->nrc }}</td>
                     <td class="text-left py-3 px-4">{{ $employer->phone }}</td>
-                    <td>
-                        <a class="bg-blue-500 hover:bg-blue-400 p-1 rounded mr-1" href="{{ route('employers.edit', $employer) }}">
+                    <td class="whitespace-no-wrap">
+                        <a class="edit text-xs" href="{{ route('employers.edit', $employer) }}">
                             Edit
                         </a>
-                        <a class="bg-red-500 hover:bg-red-400 p-1 rounded" href="{{ route('employers.destroy', $employer) }}">
+                        <a class="delete text-xs" href="{{ route('employers.destroy', $employer) }}">
                             Delete
                         </a>
                     </td>

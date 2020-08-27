@@ -93,7 +93,8 @@
 						type="number" 
 						value="{{ old('total' , isset($stock) ? $stock->total : '') }}" 
 						id="total" 
-						name="total">
+						name="total"
+						disabled>
 						@error('total')
 						<p class="invalid">{{ $message }}</p>
 						@enderror
@@ -144,11 +145,22 @@
 
 @push('scripts')
 	<script>
-	$(document).ready(function() {
-		$qty = $('#qty').val();
-		$price = $('#price').val();
-		$total = $qty * $price;
-		console.log($total);
-	});
+		$(document).ready(function() {			
+			
+			var qty = $('#qty').val();
+			var price = $('#price').val();
+
+			$('#qty,#price').on('input', function() {
+				calc();
+			});
+
+			if(qty.length > 0 && price.length > 0) {
+				calc();
+			}			
+
+			function calc() {
+				$('#total').val($('#qty').val() * $('#price').val());			
+			}
+		});
 	</script>
 @endpush

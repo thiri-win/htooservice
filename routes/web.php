@@ -12,11 +12,12 @@
 */
 Auth::routes();
 
+Route::get('/home', 'HomeController@index')->name('home');
+
 Route::middleware('auth')->group(function() {
 
     Route::get('/', 'DashBoardController@index');
 
-    Route::get('/home', 'HomeController@index')->name('home');
     Route::get('/dashboard', 'DashBoardController@index');
 
     Route::resource('employers', 'EmployersController');
@@ -37,12 +38,12 @@ Route::middleware('auth')->group(function() {
 
     Route::resource('/experiences', 'ExperienceController');
     Route::get('/experiences/{experience}/restore', 'ExperienceController@restore')->name('experiences.restore');
-
-    Route::resource('expenses/categories', 'CategoryController');
-
+    
     Route::resource('expenses', 'ExpenseController');
-
+    
     Route::resource('invoices', 'InvoiceController');
+    
+    Route::resource('expense-categories', 'ExpenseCategoryController');
 
     Route::resource('stock-categories', 'StockCategoryController');
 

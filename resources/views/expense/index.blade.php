@@ -27,11 +27,11 @@
                     <td class="text-left py-3 px-4">{{ $expense->title }}</td>
                     <td class="text-left py-3 px-4">{{ $expense->category->title }}</td>
                     <td class="text-left py-3 px-4">{{ $expense->amount}}</td>
-                    <td>
-                        <a class="bg-blue-500 hover:bg-blue-400 p-1 rounded mr-1" href="{{ route('expenses.edit', $expense) }}">
+                    <td class="whitespace-no-wrap">
+                        <a class="edit text-xs" href="{{ route('expenses.edit', $expense) }}">
                             Edit
                         </a>
-                        <a class="bg-red-500 hover:bg-red-400 p-1 rounded" href="{{ route('expenses.destroy', $expense) }}">
+                        <a class="delete text-xs" href="{{ route('expenses.destroy', $expense) }}">
                             Delete
                         </a>
                     </td>

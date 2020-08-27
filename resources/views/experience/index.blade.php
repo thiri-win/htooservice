@@ -23,11 +23,11 @@
                     <td class="text-left py-3 px-4">{{ $experience->id }}</td>
                     <td class="text-left py-3 px-4">{{ $experience->level }}</td>
                     <td class="text-left py-3 px-4">{{ $experience->updated_at->diffForHumans() }}</td>
-                    <td>
-                        <a class="bg-blue-500 hover:bg-blue-400 p-1 rounded mr-1" href="{{ route('experiences.edit', $experience) }}">
+                    <td class="whitespace-no-wrap">
+                        <a class="edit text-xs" href="{{ route('experiences.edit', $experience) }}">
                             Edit
                         </a>
-                        <a class="bg-red-500 hover:bg-red-400 p-1 rounded" href="{{ route('experiences.destroy', $experience) }}">
+                        <a class="delete text-xs" href="{{ route('experiences.destroy', $experience) }}">
                             Delete
                         </a>
                     </td>

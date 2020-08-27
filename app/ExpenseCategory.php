@@ -6,7 +6,7 @@ use App\Expense;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
-class Category extends Model
+class ExpenseCategory extends Model
 {
     protected $fillable = ['title'];
 

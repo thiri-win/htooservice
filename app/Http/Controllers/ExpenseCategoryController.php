@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Category;
-use App\Http\Requests\StoreCategory;
+use App\ExpenseCategory;
+use App\Http\Requests\StoreExpenseCategory;
 use Illuminate\Http\Request;
 
-class CategoryController extends Controller
+class ExpenseCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        return view('category.index', [
-            'categories' => Category::all(),
+        return view('expense-category.index', [
+            'expenseCategories' => ExpenseCategory::all(),
         ]);
     }
 
@@ -27,7 +27,7 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('category.form');
+        return view('expense-category.form');
     }
 
     /**
@@ -36,19 +36,19 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreCategory $request)
+    public function store(StoreExpenseCategory $request)
     {
-        Category::create($request->all());
-        return redirect()->route('categories.index');
+        ExpenseCategory::create($request->all());
+        return redirect()->route('expense-categories.index');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\ExpenseCategory  $expenseCategory
      * @return \Illuminate\Http\Response
      */
-    public function show(Category $category)
+    public function show(ExpenseCategory $expenseCategory)
     {
         //
     }
@@ -56,34 +56,34 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Category  $category
+     * @param  \App\ExpenseCategory  $expenseCategory
      * @return \Illuminate\Http\Response
      */
-    public function edit(Category $category)
+    public function edit(ExpenseCategory $expenseCategory)
     {
-        return view('category.form', ['category' => $category]);
+        return view('expense-category.form', ['expenseCategory' => $expenseCategory]);
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Category  $category
+     * @param  \App\ExpenseCategory  $expenseCategory
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Category $category)
+    public function update(StoreExpenseCategory $request, ExpenseCategory $expenseCategory)
     {
-        $category->update($request->all());
-        return redirect()->route('categories.index');
+        $expenseCategory->update($request->all());
+        return redirect()->route('expense-categories.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Category  $category
+     * @param  \App\ExpenseCategory  $expenseCategory
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Category $category)
+    public function destroy(ExpenseCategory $expenseCategory)
     {
         //
     }

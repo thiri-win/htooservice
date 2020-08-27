@@ -16,7 +16,7 @@ class StockCategoryController extends Controller
     public function index()
     {
         return view('stock-category.index',[
-            'stock_categories' => StockCategory::all(),
+            'stockCategories' => StockCategory::all(),
         ]);
     }
 

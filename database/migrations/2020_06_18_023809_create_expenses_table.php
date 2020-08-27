@@ -18,7 +18,7 @@ class CreateExpensesTable extends Migration
             $table->date('date');
             $table->string('title');
             $table->text('body')->nullable();
-            $table->unsignedInteger('category_id');
+            $table->unsignedInteger('expense_category_id');
             $table->integer('amount');
             $table->timestamps();
         });

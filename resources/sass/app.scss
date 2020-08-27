@@ -22,6 +22,10 @@ button:focus {
     @apply outline-none;
 }
 
+th {
+    @apply whitespace-no-wrap;
+}
+
 td {
     @apply p-2;
 }

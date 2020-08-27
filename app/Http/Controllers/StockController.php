@@ -41,8 +41,11 @@ class StockController extends Controller
      */
     public function store(StoreStock $request)
     {
-        Stock::create($request->all());
-        return redirect(route('stocks.create'))->with('info', 'Successfully Created');
+        $data = $request->all();
+        $data['total'] = request('qty') * request('price');
+
+        Stock::create($data);
+        return redirect(route('sales.create'))->with('info', 'New Stock Added');
     }
 
     /**
