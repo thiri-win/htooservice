@@ -30,7 +30,7 @@
                     <td class="text-left py-3 px-4">{{ $invoice->phone }}</td>
                     <td class="text-left py-3 px-4">{{ $invoice->car_make }}</td>
                     <td class="text-left py-3 px-4">{{ $invoice->car_model }}</td>
-                    <td class="text-left py-3 px-4">{{ $invoice->grand_total }}</td>
+                    <td class="text-right py-3 pr-5">{{ $invoice->grand_total }}</td>
                     <td class="whitespace-no-wrap">
                         <a class="edit text-xs" href="{{ route('invoices.edit', $invoice) }}">
                             Edit

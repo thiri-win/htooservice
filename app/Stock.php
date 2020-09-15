@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Stock extends Model
@@ -15,6 +16,8 @@ class Stock extends Model
         'supplier', 
         'remark',
     ];
+    
+    protected $with = ['category'];
 
     protected $dates = ['date'];
 

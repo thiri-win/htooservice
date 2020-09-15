@@ -71,39 +71,39 @@
                     </div>
 
                     <div class="w-full flex my-5">
-                        <label for="category_id" class="w-1/3">Category</label>
+                        <label for="expense_category_id" class="w-1/3">Category</label>
                         <div class="w-2/3">
-                            <select class="w-2/3" name="category_id">
+                            <select class="w-2/3" name="expense_category_id">
                                 <option value="" selected>--Choose--</option>
-                                @foreach (App\Category::all() as $type)
+                                @foreach (App\ExpenseCategory::all() as $type)
                                     <option
                                         value="{{ $type->id }}"
                                         @if (isset($expense))
-                                            {{ $type->id == $expense->category_id ? 'selected' : '' }}
+                                            {{ $type->id == $expense->expense_category_id ? 'selected' : '' }}
                                         @else
-                                            {{ old('category_id') == $type->id ? 'selected' : ''}}
+                                            {{ old('expense_category_id') == $type->id ? 'selected' : ''}}
                                         @endif
                                         >{{ $type->title }}
                                     </option>
                                 @endforeach
                             </select>
-                            @error('category_id')
+                            @error('expense_category_id')
                                 <p class="invalid">{{ $message }}</p>
                             @enderror
                         </div>
                     </div>
 
                     <div class="w-full flex my-5">
-                        <label for="amount" class="w-1/3">Amount :</label>
+                        <label for="total" class="w-1/3">Total :</label>
                         <div class="w-2/3">
                             <input
                             type="number"
-                            name="amount"
-                            id="amount"
-                            value="{{ old('amount', $expense->amount ?? '') }}"
+                            name="total"
+                            id="total"
+                            value="{{ old('total', $expense->total ?? '') }}"
                             class="w-2/3"
                             placeholder="Amount">
-                            @error('amount')
+                            @error('total')
                                 <p class="invalid">{{ $message }}</p>
                             @enderror
                         </div>

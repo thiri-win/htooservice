@@ -53,51 +53,54 @@
             <table class="w-full border mx-2">
                 <thead class="border">
                     <tr>
-                        <td>Description</td>
-                        <td>Quantity</td>
-                        <td>Unit Price</td>
-                        <td>Total</td>
+                        <th>Description</th>
+                        <th>Quantity</th>
+                        <th>Unit Price</th>
+                        <th>Total</th>
                     </tr>
                 </thead>
             
                 <tbody>
+                    @foreach ($invoice->sales as $sale)
+                        <tr>
+                            <td>{{ $sale->category->title }}</td>
+                            <td class="text-center">{{ $sale->quantity }}</td>
+                            <td class="text-right pr-16">{{ $sale->unit_price }}</td>
+                            <td class="text-right pr-16">{{ $sale->total }}</td>
+                        </tr>
+                    @endforeach
                     @foreach ($invoice->details as $detail)
                         <tr>
-                            <td>{{ $detail->stocks->title ?? $detail->description  }}</td>
-                            <td>{{ $detail->quantity }}</td>
-                            <td>{{ $detail->unit_price }}</td>
-                            <td>{{ $detail->total }}</td>
+                            <td>{{ $detail->description  }}</td>
+                            <td class="text-center">{{ $detail->quantity }}</td>
+                            <td class="text-right pr-16">{{ $detail->unit_price }}</td>
+                            <td class="text-right pr-16">{{ $detail->total }}</td>
                         </tr>
                     @endforeach
                 </tbody>
+
+                <tfoot class="border">
+                    <tr>
+                        <td colspan="3">Sub Total</td>
+                        <td class="text-right pr-16">{{ $invoice->sub_total }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Advanced</td>
+                        <td class="text-right pr-16">{{ $invoice->advanced }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Discount</td>
+                        <td class="text-right pr-16">{{ $invoice->discount }}</td>
+                    </tr>
+                    <tr>
+                        <td colspan="3">Grand_Total</td>
+                        <td class="text-right pr-16">{{ $invoice->grand_total }}</td>
+                    </tr>
+                </tfoot>
+
             </table>
-
-            <div class="w-full flex px-4 py-2 mt-2">
-                <label for="sub_total" class="w-1/3">Sub Total</label>
-                <div class="w-2/3">
-                    <p>{{ $invoice->sub_total }}</p>
-                </div>
-            </div>
-
-            <div class="w-full flex px-4 py-2">
-                <label for="advanced" class="w-1/3">Advanced</label>
-                <div class="w-2/3">
-                    <p>{{ $invoice->advanced }}</p>
-                </div>
-            </div>
-
-            <div class="w-full flex px-4 py-2">
-                <label for="discount" class="w-1/3">Discount</label>
-                <div class="w-2/3">
-                    <p>{{ $invoice->discount }}</p>
-                </div>
-            </div>
-
-            <div class="w-full flex px-4 py-2">
-                <label for="grand_total" class="w-1/3">Grand_Total</label>
-                <div class="w-2/3">
-                    <p>{{ $invoice->grand_total }}</p>
-                </div>
+            <div class="w-full flex justify-end my-5">
+                <a href="{{ route('invoices.index') }}" class="cancel">Back</a>
             </div>
         </div>
     </div>

@@ -136,7 +136,7 @@
                         <input 
                         class="w-full" 
                         type="number" 
-                        value="{{ old('advanced' , isset($sale) ? $sale->advanced : '') }}" 
+                        value="{{ old('advanced' , isset($sale) ? $sale->advanced : 0) }}" 
                         id="advanced" 
                         name="advanced">
                         @error('advanced')
@@ -151,7 +151,7 @@
                         <input 
                         class="w-full" 
                         type="number" 
-                        value="{{ old('discount' , isset($sale) ? $sale->discount : '') }}" 
+                        value="{{ old('discount' , isset($sale) ? $sale->discount : 0) }}" 
                         id="discount" 
                         name="discount">
                         @error('discount')
@@ -189,6 +189,14 @@
 @push('scripts')
     <script>
         $(document).ready(function() {
+
+            $('#stock_category_id').on('change', function() {
+				var instock = $("option:selected", $(this)).data('instock');
+				var unit = $("option:selected", $(this)).data('unit');
+				$('#instocks').html(instock);
+				$('#unit').html(unit);
+			});
+
             var postURL = "<?php echo url('addmore') ?>";
             var i = 2;
 
@@ -202,7 +210,7 @@
             $('#add_stock').on('click', function() {
                 i++;
                 $('#dynamic_detail').append(
-                    '<tr id="row'+i+'" class="dynamic-added"><td class="w-2/6"><select class="w-full" name="description[]"><option value="">-- Choose --</option>@foreach($stock_categories as $category)<option value={{ $category->id }}>{{ $category->title }}</option>@endforeach</select></td><td class="w-1/6"><input class="w-full" type="text" name="quantity[]"></td><td class="w-1/6"><input class="w-full" type="text" name="unit_price[]"></td><td class="w-1/6"><input class="w-full" type="text" name="total[]"></td><td><button type="button" name="remove" id="'+i+'" class="delete">X</button></td></tr>'
+                    '<tr id="row'+i+'" class="dynamic-added"><td class="w-2/6"><select class="w-full" name="stock_category_id[]"><option value="">-- Choose --</option>@foreach($stock_categories as $category)<option value={{ $category->id }}>{{ $category->title }}</option>@endforeach</select></td><td class="w-1/6"><input class="w-full" type="text" name="quantity[]"></td><td class="w-1/6"><input class="w-full" type="text" name="unit_price[]"></td><td class="w-1/6"><input class="w-full" type="text" name="total[]"></td><td><button type="button" name="remove" id="'+i+'" class="delete">X</button></td></tr>'
                 );
             });
 

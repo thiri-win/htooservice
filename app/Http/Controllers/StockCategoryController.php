@@ -39,7 +39,7 @@ class StockCategoryController extends Controller
     public function store(StoreStockCategory $request)
     {
         StockCategory::create($request->all());
-        return redirect(route('stock-categories.create'));
+        return redirect(route('stock-categories.create'))->with('info', 'Successfully Added');
     }
 
     /**

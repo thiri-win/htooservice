@@ -9,7 +9,7 @@
     <input 
         class="w-full quantity"
         type="text" 
-        value = "hello"
+        value = "1"
         name="quantity[]">
 </td>
 

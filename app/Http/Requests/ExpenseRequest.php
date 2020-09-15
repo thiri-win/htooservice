@@ -26,8 +26,8 @@ class ExpenseRequest extends FormRequest
         return [
             'date' => 'required|date',
             'title' => 'required',
-            'category_id' => 'required|exists:categories,id',
-            'amount' => 'required|integer',
+            'expense_category_id' => 'required|exists:expense_categories,id',
+            'total' => 'required|integer',
         ];
     }
 }

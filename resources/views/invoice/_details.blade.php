@@ -14,7 +14,7 @@
             @include('invoice._detail_for_services')
         </tr>
         <tr id="row2">
-            @include('invoice._detail_for_stocks')
+            @include('invoice._detail_for_sales')
         </tr>
     </tbody>
 </table>

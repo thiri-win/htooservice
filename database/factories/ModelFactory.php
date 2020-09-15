@@ -44,29 +44,29 @@ $factory->define(Invoice::class, function (Faker $faker) {
     $v = $faker->vehicleArray();
     
     return [
-        'date' => $faker->dateTimeThisMonth(),
+        'date' => $faker->dateTimeThisYear(),
         'client' => $faker->name(),
         'car_make' => $v['brand'],
         'car_no' => $faker->vehicleRegistration(),
         'car_model' => $v['model'],
         'phone' => $faker->phoneNumber,
-        'sub_total' => 1234,
+        'sub_total' => 100000,
         'advanced' => 0,
         'discount' => 0,
-        'grand_total' => 1234,
+        'grand_total' => 100000,
     ];
 });
 
 $factory->define(InvoiceDetail::class, function (Faker $faker) {
     $invoice_id = Invoice::all()->pluck('id');
-    $qty = $faker->numberBetween(1,10);
-    $unit = $faker->numberBetween(1000,30000);
+    $unit_price = [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 100000];
+    $unit = $faker->randomElement($unit_price);
     return [
         'invoice_id' => $faker->randomElement($invoice_id),
         'description' => $faker->sentence,
-        'quantity' => $qty,
+        'quantity' => 1,
         'unit_price' => $unit,
-        'total' => $qty * $unit,
+        'total' => 1 * $unit,
     ];
 });
 
@@ -78,12 +78,13 @@ $factory->define(ExpenseCategory::class, function (Faker $faker) {
 
 $factory->define(Expense::class, function (Faker $faker) {
     $expense_category_id = ExpenseCategory::all()->pluck('id');
+    $total = [10000, 20000, 30000, 40000, 50000, 60000, 70000, 80000, 100000];
     return [
-        'date' => $faker->dateTimeThisMonth(),
+        'date' => $faker->dateTimeThisYear(),
         'title' => $faker->sentence,
         'body' => $faker->paragraph(),
         'expense_category_id' => $faker->randomElement($expense_category_id),
-        'amount' => $faker->numberBetween(1000,30000)
+        'total' => $faker->randomElement($total),
     ];
 });
 
@@ -96,10 +97,11 @@ $factory->define(StockCategory::class, function (Faker $faker) {
 
 $factory->define(Stock::class, function (Faker $faker) {
     $qty = $faker->numberBetween(20,50);
-    $price = $faker->numberBetween(100,10000);
+    $price_list = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 10000];
+    $price = $faker->randomElement($price_list);
     $category = App\StockCategory::all();
     return [
-        'date' => $faker->dateTimeThisMonth(),
+        'date' => $faker->dateTimeThisYear(),
         'stock_category_id' => $faker->randomElement($category),
         'qty' => $qty,
         'price' => $price,
@@ -110,16 +112,16 @@ $factory->define(Stock::class, function (Faker $faker) {
 });
 
 $factory->define(Sale::class, function (Faker $faker) {
-    $qty = $faker->numberBetween(1,10);
-    $price = $faker->numberBetween(100,10000);
-    $category = App\StockCategory::all();
+    $invoice_id = Invoice::all()->pluck('id');
+    $quantity = $faker->numberBetween(1,5);
+    $price_list = [1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 10000];
+    $price = $faker->randomElement($price_list);
+    $category = App\StockCategory::all()->pluck('id');
     return [
-        'date' => $faker->dateTimeThisMonth(),
+        'invoice_id' => $faker->randomElement($invoice_id),
         'stock_category_id' => $faker->randomElement($category),
-        'qty' => $qty,
-        'price' => $price,
-        'total' => $qty * $price,
-        'customer' => $faker->name(),
-        'remark' => $faker->sentence(),
+        'quantity' => $quantity,
+        'unit_price' => $price,
+        'total' => $quantity * $price,
     ];
 });

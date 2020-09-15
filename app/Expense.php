@@ -2,11 +2,12 @@
 
 namespace App;
 
+use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
 class Expense extends Model
 {
-  protected $fillable = ['date', 'title', 'body', 'category_id', 'amount'];
+  protected $fillable = ['date', 'title', 'body', 'expense_category_id', 'total'];
   protected $with = ['category'];
   protected $dates = ['date'];
   

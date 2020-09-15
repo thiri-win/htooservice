@@ -25,7 +25,6 @@ class StoreStockCategory extends FormRequest
     {
         return [
             'title' => 'required',
-            'remark' => 'required',
         ];
     }
 }

@@ -36,19 +36,22 @@
 				<div class="w-full flex my-5">
 					<label for="stock_category_id" class="w-1/3">အမျိုးအစား</label>
 					<div class="w-2/3">
-						<select name="stock_category_id" id="stock_category_id" class="w-full p-1">
-							<option value="">--Choose--</option>
-							@foreach ($stock_categories as $category)
-								<option 
-									value="{{ $category->id }}"
-									@if (isset($stock))
-										{{ $category->id == $stock->stock_category_id ? 'selected' : '' }}
-									@else
-										{{ old('stock_category_id') == $category->id ? 'selected' : ''}}
-									@endif									
-									>{{ $category->title }}</option>
-							@endforeach
-						</select>
+						<div class="flex">
+							<select name="stock_category_id" id="stock_category_id" class="w-full p-1">
+								<option value="">--Choose--</option>
+								@foreach ($stock_categories as $category)
+									<option 
+										value="{{ $category->id }}"
+										@if (isset($stock))
+											{{ $category->id == $stock->stock_category_id ? 'selected' : '' }}
+										@else
+											{{ old('stock_category_id') == $category->id ? 'selected' : ''}}
+										@endif									
+										>{{ $category->title }}</option>
+								@endforeach
+							</select>
+							<a href="{{ route('stock-categories.create') }}" class="mx-2 my-1 new">New</a>
+						</div>
 						@error('stock_category_id')
 						<p class="invalid">{{ $message }}</p>
 						@enderror

@@ -25,9 +25,4 @@ class StockCategory extends Model
         $instocks = $this->stocks->sum('qty') - $this->sales->sum('qty');
         return $instocks;
     }
-
-    public function invoice_details()
-    {
-        return $this->hasMany('App\InvoiceDetail');
-    }
 }

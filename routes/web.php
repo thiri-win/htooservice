@@ -18,7 +18,7 @@ Route::middleware('auth')->group(function() {
 
     Route::get('/', 'DashBoardController@index');
 
-    Route::get('/dashboard', 'DashBoardController@index');
+    Route::get('/dashboard', 'DashBoardController@index')->name('dashboard.index');
 
     Route::resource('employers', 'EmployersController');
     Route::get('/employers/{employer}/positions', 'EmployersController@createPosition')->name('employer.position.create');
@@ -49,5 +49,5 @@ Route::middleware('auth')->group(function() {
 
     Route::resource('stocks', 'StockController');
 
-    Route::resource('sales', 'SaleController');
+    // Route::resource('sales', 'SaleController');
 });

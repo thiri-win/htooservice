@@ -15,13 +15,11 @@ class CreateSalesTable extends Migration
     {
         Schema::create('sales', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('date');
+            $table->unsignedBigInteger('invoice_id');
             $table->unsignedInteger('stock_category_id');
-            $table->integer('qty');
-            $table->integer('price');
+            $table->integer('quantity');
+            $table->integer('unit_price');
             $table->integer('total');
-            $table->string('customer')->nullable();
-            $table->string('remark')->nullable();
             $table->timestamps();
         });
     }

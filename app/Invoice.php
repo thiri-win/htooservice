@@ -23,4 +23,9 @@ class Invoice extends Model
     {
         return $this->hasMany('App\InvoiceDetail', 'invoice_id');
     }
+
+    public function sales()
+    {
+        return $this->hasMany('App\Sale', 'invoice_id');
+    }
 }

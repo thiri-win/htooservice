@@ -16,7 +16,7 @@ class CreateStockCategoriesTable extends Migration
         Schema::create('stock_categories', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->string('remark');
+            $table->string('remark')->nullable();
             $table->timestamps();
         });
     }

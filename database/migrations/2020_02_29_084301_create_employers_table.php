@@ -21,7 +21,7 @@ class CreateEmployersTable extends Migration
             $table->string('email')->nullable();
             $table->string('phone');
             $table->string('address');
-            $table->text('about');
+            $table->text('about')->nullable();
             $table->softDeletes();
             $table->timestamps();
         });

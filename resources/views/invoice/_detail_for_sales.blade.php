@@ -1,5 +1,5 @@
 <td class="w-2/6">
-    <select name="description[]"
+    <select name="stock_category_id[]"
         class="w-full py-1">
         <option value="">-- Choose --</option>
         @foreach ($stock_categories as $category)            
@@ -12,7 +12,8 @@
     <input 
         class="w-full"
         type="text" 
-        name="quantity[]">
+        name="quantity[]"
+        value="1">
 </td>
 
 <td class="w-1/6">
